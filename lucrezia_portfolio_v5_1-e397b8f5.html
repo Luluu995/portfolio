@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucrezia Spapperi Gestri — Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;700;900&family=Archivo:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --black: #0f0f0f;
+  --white: #f5f4f0;
+  --off: #eeede9;
+  --mid: #c8c6be;
+  --dim: #8a8880;
+  --border: rgba(15,15,15,0.1);
+  --border-strong: rgba(15,15,15,0.18);
+  --accent: #0f0f0f;
+  --radius: 4px;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Archivo', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* CURSOR — ref.digital style: simple dot */
+.cur {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--black);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width 0.3s cubic-bezier(0.34,1.56,0.64,1),
+              height 0.3s cubic-bezier(0.34,1.56,0.64,1),
+              background 0.3s;
+}
+.cur.expand {
+  width: 60px; height: 60px;
+  background: rgba(15,15,15,0.07);
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  padding: 0 32px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--black);
+  text-decoration: none;
+}
+.nav-center {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--dim);
+  letter-spacing: 0.01em;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-right a {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.01em;
+}
+.nav-right a:hover { color: var(--black); }
+.nav-avail {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--black);
+  letter-spacing: 0.01em;
+}
+.nav-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #1db954;
+  flex-shrink: 0;
+}
+
+/* HERO */
+.hero {
+  min-height: 100svh;
+  padding: 56px 32px 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-top {
+  padding: 48px 0 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow-line {
+  width: 28px; height: 1px;
+  background: var(--mid);
+}
+
+.hero-name {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(52px, 9.5vw, 148px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  margin-bottom: 0;
+}
+.hero-name .light {
+  font-weight: 200;
+  color: var(--mid);
+  display: block;
+}
+.hero-name .indent {
+  padding-left: clamp(40px, 8vw, 140px);
+  display: block;
+}
+
+.hero-bottom-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-top: 56px;
+  border-top: 1px solid var(--border-strong);
+}
+.hbb-cell {
+  padding: 28px 0;
+  border-right: 1px solid var(--border);
+  padding-right: 32px;
+}
+.hbb-cell:first-child { padding-left: 0; }
+.hbb-cell:last-child { border-right: none; padding-left: 32px; }
+.hbb-cell:nth-child(2) { padding-left: 32px; }
+.hbb-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+.hbb-val {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--black);
+  line-height: 1.5;
+}
+.hbb-val strong { font-weight: 500; }
+
+/* TICKER */
+.ticker {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 12px 0;
+  background: var(--off);
+}
+.ticker-track {
+  display: inline-block;
+  animation: tick 28s linear infinite;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.ticker-track .sep { color: var(--mid); margin: 0 20px; }
+@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* SECTION BASE */
+.sec { padding: 100px 32px; }
+.sec-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.sec-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ABOUT */
+#about { background: var(--white); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+.about-headline {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 36px;
+  color: var(--black);
+}
+
+.about-body {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--dim);
+}
+.about-body p + p { margin-top: 20px; }
+.about-body strong { color: var(--black); font-weight: 400; }
+
+.skills-wrap {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sk {
+  padding: 8px 16px;
+  border: 1px solid var(--border-strong);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-radius: var(--radius);
+  transition: all 0.25s;
+}
+.sk:hover {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.about-right { }
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.stat-cell {
+  background: var(--off);
+  padding: 28px 24px;
+}
+.stat-n {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-l {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.exp-rows { }
+.exp-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.exp-row:last-child { border-bottom: none; }
+.exp-co {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--black);
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+.exp-role {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--dim);
+  letter-spacing: 0.01em;
+}
+.exp-period {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--mid);
+  white-space: nowrap;
+  text-align: right;
+  padding-top: 2px;
+  letter-spacing: 0.02em;
+}
+
+/* WORK — ref.digital project list style */
+#work { background: var(--off); padding: 100px 0; }
+.work-inner { padding: 0 32px; }
+
+.work-headline {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(40px, 6vw, 84px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin-bottom: 72px;
+  color: var(--black);
+}
+.work-headline span {
+  font-weight: 200;
+  color: var(--mid);
+  display: block;
+}
+
+/* PROJECT LIST — ref.digital style with code + title */
+.project-list { border-top: 1px solid var(--border-strong); }
+
+.proj {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.25s;
+  cursor: default;
+  position: relative;
+}
+.proj:hover { background: var(--white); }
+
+/* Hover reveal image — ref.digital signature */
+.proj-thumb {
+  position: absolute;
+  right: 200px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.92) translateX(8px);
+  width: 240px;
+  aspect-ratio: 16/10;
+  border-radius: 6px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1), transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  z-index: 10;
+  border: 1px solid var(--border);
+}
+.proj:hover .proj-thumb {
+  opacity: 1;
+  transform: translateY(-50%) scale(1) translateX(0);
+}
+.proj-thumb-inner {
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,0.3);
+}
+
+/* thumb bg colors */
+.t-hisense { background: linear-gradient(135deg, #0a0a2e, #1a2080); }
+.t-honor { background: linear-gradient(135deg, #2a0a0a, #801a1a); }
+.t-veld { background: linear-gradient(135deg, #080812, #200a40); }
+.t-flux { background: linear-gradient(135deg, #060e1e, #0c1e60); }
+.t-elysian { background: linear-gradient(135deg, #1a1410, #4a3a28); }
+.t-loro { background: linear-gradient(135deg, #100e0c, #302618); }
+
+.proj-code-col {
+  padding: 32px 0 32px 0;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border);
+  padding-right: 24px;
+}
+.proj-code {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--mid);
+  line-height: 1.4;
+}
+
+.proj-main-col {
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.proj-cat {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.proj-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+.proj-desc-short {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.6;
+  max-width: 480px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s, max-height 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.proj:hover .proj-desc-short {
+  opacity: 1;
+  max-height: 80px;
+}
+.proj-tags-inline {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.ptag-sm {
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  border-radius: 2px;
+}
+
+.proj-right-col {
+  padding: 32px 32px 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-left: 1px solid var(--border);
+  min-width: 140px;
+}
+.proj-arrow {
+  font-size: 20px;
+  color: var(--mid);
+  transform: rotate(-45deg);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), color 0.2s;
+}
+.proj:hover .proj-arrow {
+  transform: rotate(0deg);
+  color: var(--black);
+}
+
+/* AWARDS */
+#awards { background: var(--white); }
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.award-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: start;
+  transition: background 0.25s;
+}
+.award-card:hover { background: var(--off); }
+.award-year-badge {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+  padding: 6px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.award-name {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.award-org {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+/* POSITION BAND */
+.position-band {
+  background: var(--black);
+  color: var(--white);
+  padding: 120px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.position-band::before {
+  content: 'LSG';
+  position: absolute;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 320px;
+  color: rgba(255,255,255,0.025);
+  right: -20px;
+  bottom: -40px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.pos-eyebrow {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 28px;
+}
+.pos-text {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(28px, 4vw, 58px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+.pos-text strong {
+  font-weight: 700;
+  color: var(--white);
+}
+.pos-sub {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.45);
+  max-width: 520px;
+}
+.pos-sub strong { color: rgba(255,255,255,0.8); font-weight: 400; }
+
+/* CONTACT */
+#contact { background: var(--off); }
+
+.contact-headline {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 16px;
+  color: var(--black);
+}
+.contact-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--dim);
+  margin-bottom: 64px;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.contact-links-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.clink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--dim);
+  transition: background 0.2s, color 0.2s;
+}
+.clink:last-child { border-bottom: none; }
+.clink:hover { background: var(--off); color: var(--black); }
+.cl-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: block;
+  margin-bottom: 3px;
+}
+.cl-val {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--black);
+  letter-spacing: 0.01em;
+}
+.cl-arrow {
+  font-size: 18px;
+  color: var(--mid);
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), color 0.2s;
+  transform: rotate(-45deg);
+}
+.clink:hover .cl-arrow {
+  transform: rotate(0deg);
+  color: var(--black);
+}
+
+.avail-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+}
+.avail-title {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+.avail-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.5;
+}
+.avail-item:last-child { border-bottom: none; }
+.avail-check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--dim);
+}
+
+/* FOOTER */
+footer {
+  background: var(--black);
+  color: var(--white);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+.footer-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.5);
+}
+.footer-mid {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.footer-right {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.3);
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+
+/* REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.in { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.16s; }
+.d3 { transition-delay: 0.24s; }
+</style>
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">LSG</a>
+  <span class="nav-center">Shenzhen, CN → Milan, IT</span>
+  <div class="nav-right">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+    <div class="nav-avail">
+      <div class="nav-dot"></div>
+      Available
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      Brand & Experience Designer
+    </div>
+    <h1 class="hero-name">
+      LUCREZIA
+      <span class="light indent">SPAPPERI</span>
+      <span class="indent">GESTRI</span>
+    </h1>
+  </div>
+
+  <div class="hero-bottom-bar">
+    <div class="hbb-cell">
+      <div class="hbb-label">Location</div>
+      <div class="hbb-val"><strong>Shenzhen, China</strong><br>Open to relocation</div>
+    </div>
+    <div class="hbb-cell">
+      <div class="hbb-label">Specialisation</div>
+      <div class="hbb-val">Brand Identity · UX/UI<br>Digital Strategy · AIGC</div>
+    </div>
+    <div class="hbb-cell">
+      <div class="hbb-label">Education</div>
+      <div class="hbb-val">Politecnico di Milano<br>Tsinghua University</div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-track">
+    Brand Identity <span class="sep">·</span> Visual Communication <span class="sep">·</span> UX Design <span class="sep">·</span> Digital Strategy <span class="sep">·</span> AIGC <span class="sep">·</span> Cross-cultural <span class="sep">·</span> Editorial <span class="sep">·</span> Naming <span class="sep">·</span> Key Visuals <span class="sep">·</span> Interaction Design <span class="sep">·</span>
+    Brand Identity <span class="sep">·</span> Visual Communication <span class="sep">·</span> UX Design <span class="sep">·</span> Digital Strategy <span class="sep">·</span> AIGC <span class="sep">·</span> Cross-cultural <span class="sep">·</span> Editorial <span class="sep">·</span> Naming <span class="sep">·</span> Key Visuals <span class="sep">·</span> Interaction Design <span class="sep">·</span>
+  </span>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="sec-label">About</div>
+  <div class="about-grid">
+    <div class="reveal">
+      <h2 class="about-headline">Italian designer.<br>Shenzhen-based.<br>Cross-cultural.</h2>
+      <div class="about-body">
+        <p>I'm a multidisciplinary designer with 10+ years of experience across brand identity, UX/UI, communication design, and digital strategy. Born and trained in Italy, now working at the centre of China's tech industry in Shenzhen.</p>
+        <p>Educated at <strong>Politecnico di Milano</strong> (MSc Communication Design + MSc Digital Strategy) and <strong>Tsinghua University</strong> (MSc Information Art and Design). The dual formation isn't a detail — it's the foundation of everything I do.</p>
+        <p>Currently <strong>Brand Designer at Botinkit</strong> in Shenzhen. Previously Brand Designer & Interaction Designer at <strong>Hisense R&D</strong>, and UX/UI & Brand Intern at <strong>Loro Piana (LVMH)</strong>.</p>
+      </div>
+      <div class="skills-wrap">
+        <span class="sk">Brand Identity</span>
+        <span class="sk">Visual Design</span>
+        <span class="sk">UX / UI</span>
+        <span class="sk">AIGC</span>
+        <span class="sk">Digital Strategy</span>
+        <span class="sk">Editorial</span>
+        <span class="sk">Key Visuals</span>
+        <span class="sk">Naming</span>
+        <span class="sk">Cross-cultural Research</span>
+      </div>
+    </div>
+
+    <div class="reveal d2">
+      <div class="stat-row">
+        <div class="stat-cell">
+          <div class="stat-n">10+</div>
+          <div class="stat-l">Years exp.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-n">×2</div>
+          <div class="stat-l">Awards</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-n">CN</div>
+          <div class="stat-l">Based</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-n">3</div>
+          <div class="stat-l">Languages</div>
+        </div>
+      </div>
+
+      <div class="exp-rows">
+        <div class="exp-row">
+          <div>
+            <div class="exp-co">Botinkit</div>
+            <div class="exp-role">Brand Designer · Shenzhen</div>
+          </div>
+          <div class="exp-period">2025 — Now</div>
+        </div>
+        <div class="exp-row">
+          <div>
+            <div class="exp-co">Hisense R&D</div>
+            <div class="exp-role">Brand & Interaction Designer · Qingdao</div>
+          </div>
+          <div class="exp-period">2024 — 2025</div>
+        </div>
+        <div class="exp-row">
+          <div>
+            <div class="exp-co">Loro Piana (LVMH)</div>
+            <div class="exp-role">UX/UI & Brand Intern · Milan</div>
+          </div>
+          <div class="exp-period">2019 — 2021</div>
+        </div>
+        <div class="exp-row">
+          <div>
+            <div class="exp-co">Politecnico di Milano</div>
+            <div class="exp-role">MSc Communication Design + Digital Strategy</div>
+          </div>
+          <div class="exp-period">2018 — 2025</div>
+        </div>
+        <div class="exp-row">
+          <div>
+            <div class="exp-co">Tsinghua University</div>
+            <div class="exp-role">MSc Information Art & Design</div>
+          </div>
+          <div class="exp-period">2023 — 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" style="padding:0; background: var(--off);">
+  <div class="work-inner sec">
+    <div class="sec-label">Selected Work — 06 Projects</div>
+    <h2 class="work-headline reveal">
+      Move fast.<br>
+      <span>Build to last.</span>
+    </h2>
+
+    <div class="project-list">
+
+      <!-- 01 Hisense -->
+      <div class="proj reveal">
+        <div class="proj-thumb t-hisense"><div class="proj-thumb-inner">HSN</div></div>
+        <div class="proj-code-col">
+          <div class="proj-code">HSN<br>0124</div>
+        </div>
+        <div class="proj-main-col">
+          <div class="proj-cat">Brand & Visual Communication · Hisense R&D</div>
+          <div class="proj-title">Innovation Event & Key Visuals</div>
+          <div class="proj-desc-short">Full visual communication system for the 2024 UXDA Innovation Event — posters, key visuals, TV commercial scene design for Chinese youth audiences.</div>
+          <div class="proj-tags-inline">
+            <span class="ptag-sm">Vector Illustration</span>
+            <span class="ptag-sm">Poster Design</span>
+            <span class="ptag-sm">Key Visuals</span>
+            <span class="ptag-sm">TV Commercial</span>
+            <span class="ptag-sm">AIGC</span>
+          </div>
+        </div>
+        <div class="proj-right-col">
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+      <!-- 02 HONOR -->
+      <div class="proj reveal">
+        <div class="proj-thumb t-honor"><div class="proj-thumb-inner">HNR</div></div>
+        <div class="proj-code-col">
+          <div class="proj-code">HNR<br>0225</div>
+        </div>
+        <div class="proj-main-col">
+          <div class="proj-cat">AI Design · Cross-cultural · Award Winner ×2</div>
+          <div class="proj-title">HONOR Talents — Neo-Tradition Series</div>
+          <div class="proj-desc-short">Two award-winning AI artworks merging traditional Chinese aesthetics with contemporary digital art. Selected for physical merchandising on HONOR devices globally.</div>
+          <div class="proj-tags-inline">
+            <span class="ptag-sm">AIGC</span>
+            <span class="ptag-sm">Visual Design</span>
+            <span class="ptag-sm">Cultural Fusion</span>
+            <span class="ptag-sm">Merchandising</span>
+          </div>
+        </div>
+        <div class="proj-right-col">
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+      <!-- 03 VELD -->
+      <div class="proj reveal">
+        <div class="proj-thumb t-veld"><div class="proj-thumb-inner">VLD</div></div>
+        <div class="proj-code-col">
+          <div class="proj-code">VLD<br>0324</div>
+        </div>
+        <div class="proj-main-col">
+          <div class="proj-cat">Brand Identity · Naming · Go-to-market</div>
+          <div class="proj-title">VELD Festival — Resonating Soundscape</div>
+          <div class="proj-desc-short">End-to-end brand for a premium European electronic music festival. Custom naming, gothic typographic monolith, 9+ touchpoints — wristband to stadium stage.</div>
+          <div class="proj-tags-inline">
+            <span class="ptag-sm">Naming</span>
+            <span class="ptag-sm">Visual Identity</span>
+            <span class="ptag-sm">Brand Strategy</span>
+            <span class="ptag-sm">Merchandising</span>
+          </div>
+        </div>
+        <div class="proj-right-col">
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+      <!-- 04 FluxLAb -->
+      <div class="proj reveal">
+        <div class="proj-thumb t-flux"><div class="proj-thumb-inner">FLX</div></div>
+        <div class="proj-code-col">
+          <div class="proj-code">FLX<br>0424</div>
+        </div>
+        <div class="proj-main-col">
+          <div class="proj-cat">Tech Branding · UX/UI · Brand System</div>
+          <div class="proj-title">FluxLAb — Generative Innovation</div>
+          <div class="proj-desc-short">Complete visual identity for an AI & generative tools incubator in Los Angeles. Custom logotype, full brand ecosystem from stationery to mobile dashboard.</div>
+          <div class="proj-tags-inline">
+            <span class="ptag-sm">Naming</span>
+            <span class="ptag-sm">Logo Design</span>
+            <span class="ptag-sm">UX/UI</span>
+            <span class="ptag-sm">AIGC</span>
+          </div>
+        </div>
+        <div class="proj-right-col">
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+      <!-- 05 Elysian -->
+      <div class="proj reveal">
+        <div class="proj-thumb t-elysian"><div class="proj-thumb-inner">ELY</div></div>
+        <div class="proj-code-col">
+          <div class="proj-code">ELY<br>0525</div>
+        </div>
+        <div class="proj-main-col">
+          <div class="proj-cat">Luxury Branding · Product Design · Web</div>
+          <div class="proj-title">Elysian — Luxury Skincare Brand</div>
+          <div class="proj-desc-short">Complete brand creation for a bio-nutritional skincare startup. Naming, identity, 4 product packaging lines, e-commerce website. Korean Cloud Skin meets botanical wellness.</div>
+          <div class="proj-tags-inline">
+            <span class="ptag-sm">Brand Identity</span>
+            <span class="ptag-sm">Naming</span>
+            <span class="ptag-sm">Packaging</span>
+            <span class="ptag-sm">Web Design</span>
+          </div>
+        </div>
+        <div class="proj-right-col">
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+      <!-- 06 Loro Piana -->
+      <div class="proj reveal">
+        <div class="proj-thumb t-loro"><div class="proj-thumb-inner">LPX</div></div>
+        <div class="proj-code-col">
+          <div class="proj-code">LPX<br>0621</div>
+        </div>
+        <div class="proj-main-col">
+          <div class="proj-cat">Digital Strategy · UX · Luxury · China Market</div>
+          <div class="proj-title">Loro Piana — Phygital Luxury Experience</div>
+          <div class="proj-desc-short">Reimagined Loro Piana's retail for the phygital era. AR-enabled clienteling, omnichannel journey design, strategy for +14% brand demand growth in China.</div>
+          <div class="proj-tags-inline">
+            <span class="ptag-sm">Digital Strategy</span>
+            <span class="ptag-sm">UX/UI</span>
+            <span class="ptag-sm">China Market</span>
+            <span class="ptag-sm">AR</span>
+          </div>
+        </div>
+        <div class="proj-right-col">
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" class="sec reveal">
+  <div class="sec-label">Recognition</div>
+  <div class="awards-grid">
+    <div class="award-card">
+      <div class="award-year-badge">2025</div>
+      <div>
+        <div class="award-name">AIGC Innovation Award</div>
+        <div class="award-org">HONOR Talents Global Design Award — AI design category. Works selected for physical merchandising on HONOR devices globally.</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-year-badge">2024</div>
+      <div>
+        <div class="award-name">Global Design Talent Award</div>
+        <div class="award-org">HONOR Talents Global Design Award — Wallpaper category winner. Cross-cultural AI artwork selected from global submissions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITION BAND -->
+<div class="position-band reveal">
+  <div class="pos-eyebrow">Why it matters</div>
+  <h2 class="pos-text">
+    Some say move fast,<br>
+    <strong>break things.</strong><br>
+    I've broken enough things already.
+  </h2>
+  <p class="pos-sub">I design at the intersection of <strong>Italian craft</strong> and <strong>Chinese digital culture</strong>. This perspective is rare — and it's exactly what brands need when they want to speak to both worlds without losing either.</p>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="sec-label">Contact</div>
+  <h2 class="contact-headline reveal">Get in touch.<br>Let's get to work.</h2>
+  <p class="contact-sub reveal d1">If you have a project in mind, I'd love to hear about it.</p>
+
+  <div class="contact-grid reveal d2">
+    <div class="contact-links-card">
+      <a href="mailto:lucreziagestri@yahoo.it" class="clink">
+        <div>
+          <span class="cl-label">Email</span>
+          <span class="cl-val">lucreziagestri@yahoo.it</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="https://linkedin.com/in/lucrezia-gestri-spapperi" class="clink" target="_blank">
+        <div>
+          <span class="cl-label">LinkedIn</span>
+          <span class="cl-val">lucrezia-gestri-spapperi</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="tel:+8619568728647" class="clink">
+        <div>
+          <span class="cl-label">Phone / WeChat</span>
+          <span class="cl-val">+86 195 6872 8647</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="avail-card">
+      <div class="avail-title">Available for</div>
+      <div class="avail-item"><div class="avail-check">✓</div>Full-time roles in Brand, Visual Design, or UX</div>
+      <div class="avail-item"><div class="avail-check">✓</div>Global tech teams with cross-cultural needs</div>
+      <div class="avail-item"><div class="avail-check">✓</div>Tech companies expanding CN ↔ Western markets</div>
+      <div class="avail-item"><div class="avail-check">✓</div>Luxury and consumer brand design projects</div>
+      <div class="avail-item"><div class="avail-check">✓</div>Shenzhen-based · Open to relocation · IT / EN / ZH</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">LSG</span>
+  <span class="footer-mid">Lucrezia Spapperi Gestri · Brand & Experience Designer · Shenzhen 2025</span>
+  <span class="footer-right">IT / EN / ZH</span>
+</footer>
+
+<script>
+// Cursor
+const cur = document.getElementById('cur');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, .proj, .award-card, .sk').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('expand'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('expand'));
+});
+
+// Reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
