@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How AI, neuroscience, and human emotions intersect in design. Explore the science behind how people respond to design and what it means for creating meaningful digital experiences.">
+<meta name="keywords" content="neuroscience design, human emotions, AI design, emotional design, psychology design, behavioral design, user experience">
+<meta name="author" content="Lucrezia Spapperi Gestri">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="AI, Human Emotions, and the Neuroscience of Design">
+<meta property="og:description" content="Explore how neuroscience, human emotions, and AI intersect to create meaningful design experiences. Understand the science of why certain designs resonate.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lucreziasdesign.github.io/portfolio/blog/ai-emotions-neuroscience/">
+<meta name="twitter:card" content="summary_large_image">
+<title>AI, Human Emotions, and the Neuroscience of Design | Lucrezia Gestri</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;700;900&family=Archivo:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://lucreziasdesign.github.io/portfolio/blog/ai-emotions-neuroscience/">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #0d0d0d;
+  background: #f9f9f9;
+  line-height: 1.8;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4%;
+  border-bottom: 1px solid #e0e0e0;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav a { color: #0d0d0d; text-decoration: none; font-weight: 500; font-size: 14px; margin-left: 2rem; }
+.nav a:hover { opacity: 0.7; }
+.logo { font-family: 'Unbounded'; font-weight: 700; font-size: 18px; }
+.article-wrapper { max-width: 800px; margin: 0 auto; padding: 4rem 4%; }
+.article-header { margin-bottom: 3rem; }
+.article-meta {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 1rem;
+}
+.article-meta span { margin-right: 1.5rem; }
+.article-tag {
+  display: inline-block;
+  background: #f0f0f0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+h1 {
+  font-family: 'Unbounded';
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.article-intro {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+.article-content {
+  font-size: 16px;
+  color: #0d0d0d;
+}
+.article-content h2 {
+  font-family: 'Unbounded';
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.article-content h3 {
+  font-family: 'Unbounded';
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+}
+.article-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+.article-content ul, .article-content ol {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+.article-content strong { font-weight: 600; }
+.article-content em { font-style: italic; }
+.highlight {
+  background: #fff9e6;
+  padding: 2rem;
+  border-left: 4px solid #0d0d0d;
+  margin: 2rem 0;
+  border-radius: 4px;
+}
+.highlight p { margin: 0; }
+.case-study {
+  background: #f9f9f9;
+  padding: 2rem;
+  border-left: 4px solid #0d0d0d;
+  margin: 2rem 0;
+  border-radius: 4px;
+}
+.case-study h4 {
+  font-family: 'Unbounded';
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.cta-section {
+  background: #f0f0f0;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 3rem;
+  text-align: center;
+}
+.cta-section p { margin-bottom: 1rem; }
+.cta-link {
+  display: inline-block;
+  background: #0d0d0d;
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.cta-link:hover { opacity: 0.8; }
+.related-articles {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid #e0e0e0;
+}
+.related-articles h3 {
+  font-family: 'Unbounded';
+  font-size: 20px;
+  margin-bottom: 1.5rem;
+}
+.related-links {
+  display: grid;
+  gap: 1rem;
+}
+.related-links a {
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #0d0d0d;
+  transition: all 0.3s ease;
+}
+.related-links a:hover {
+  border-color: #0d0d0d;
+  background: #f9f9f9;
+}
+footer {
+  background: #0d0d0d;
+  color: white;
+  padding: 3rem 4%;
+  text-align: center;
+  margin-top: 4rem;
+  border-top: 1px solid #e0e0e0;
+}
+footer p { margin-bottom: 1rem; }
+footer a { color: #fff; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+@media (max-width: 768px) {
+  .nav { flex-direction: column; gap: 1rem; padding: 1.5rem 4%; }
+  .nav a { margin-left: 0; }
+  .article-wrapper { padding: 2rem 4%; }
+  h1 { font-size: 32px; }
+  .article-content h2 { font-size: 22px; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI, Human Emotions, and the Neuroscience of Design",
+  "description": "Explore how neuroscience, human emotions, and AI intersect to create meaningful design experiences. Understand the science of why certain designs resonate.",
+  "image": "https://lucreziasdesign.github.io/portfolio/assets/portrait.png",
+  "datePublished": "2025-05-27",
+  "author": {
+    "@type": "Person",
+    "name": "Lucrezia Spapperi Gestri",
+    "url": "https://lucreziasdesign.github.io/portfolio/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lucreziasdesign.github.io/portfolio/blog/ai-emotions-neuroscience/"
+  }
+}
+</script>
+</head>
+<body>
+  <div class="nav">
+    <a href="../../" class="logo">LSG/DESIGN</a>
+    <div>
+      <a href="../../#work">Work</a>
+      <a href="../../#about">About</a>
+      <a href="../">Blog</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="article-wrapper">
+    <article>
+      <div class="article-header">
+        <span class="article-tag">Design & Neuroscience</span>
+        <h1>AI, Human Emotions, and the Neuroscience of Design</h1>
+        <div class="article-meta">
+          <span>May 27, 2025</span>
+          <span>8 min read</span>
+        </div>
+        <p class="article-intro">Design isn't just aesthetics. It's neuroscience. Every color, typeface, and interaction triggers specific brain responses. As AI becomes more capable of understanding human emotion, designers who understand the science behind emotional response will create experiences that truly resonate.</p>
+      </div>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="assets/neuroscience-emotions-hero.jpg" alt="Human brain and emotions in design illustration" style="max-width: 100%; height: auto; border-radius: 8px;">
+        <figcaption style="font-size: 14px; color: #999; margin-top: 0.5rem;">Featured image: The neuroscience of emotional design</figcaption>
+      </figure>
+
+      <div class="article-content">
+        <h2>The Science of Emotional Response</h2>
+        <p>Humans don't experience design rationally. We experience it emotionally first. Our brains process visual information in milliseconds, triggering immediate emotional responses before conscious thought kicks in.</p>
+        <p>As Ed Fin notes in "What Algorithms Want," algorithms are increasingly designed to understand and predict human behavior. They study patterns of emotional engagement, conversion, retention. The next layer of this is using that understanding to create design systems that work <em>with</em> human neuroscience, not against it.</p>
+        <p>Key brain systems at work in design:</p>
+        <ul>
+          <li><strong>The amygdala:</strong> Processes emotional content instantly. Why certain colors feel "safe" or "exciting"</li>
+          <li><strong>The prefrontal cortex:</strong> Rational decision-making. Where logical flow and information hierarchy matter</li>
+          <li><strong>The visual cortex:</strong> Processes shapes, contrast, and motion. Why some interfaces feel more "premium"</li>
+          <li><strong>The motor cortex:</strong> Predicts motion and interaction. Why smooth animations feel right</li>
+        </ul>
+
+        <h2>What Algorithms Want (and What That Means for Design)</h2>
+        <p>Fin's framework in "What Algorithms Want" is crucial for modern designers. Algorithms want:</p>
+        <ul>
+          <li><strong>Clarity:</strong> Clear signals about what matters. In design, this is hierarchy and contrast</li>
+          <li><strong>Predictability:</strong> Consistent patterns. In design, this is design systems and component libraries</li>
+          <li><strong>Engagement:</strong> Emotional resonance. In design, this is understanding what triggers positive emotion</li>
+          <li><strong>Measurable outcomes:</strong> Data-backed decisions. In design, this is A/B testing and user feedback</li>
+        </ul>
+
+        <div class="highlight">
+          <p><strong>Key insight:</strong> The intersection of AI and design isn't "making AI replace designers." It's using AI to understand emotional patterns at scale, then using that data to design experiences that genuinely resonate with human brains.</p>
+        </div>
+
+        <h2>Color, Contrast, and the Amygdala</h2>
+        <p>Your color choices don't matter because they're trendy. They matter because they trigger specific neural pathways.</p>
+        <p><strong>Warm colors</strong> (red, orange, warm yellow) activate the sympathetic nervous system—they signal energy, urgency, excitement. Your brain says: "Pay attention."</p>
+        <p><strong>Cool colors</strong> (blue, green, cool gray) activate the parasympathetic nervous system—they signal calm, trust, stability. Your brain says: "You're safe here."</p>
+        <p>When you choose a color palette for a brand, you're not being aesthetic. You're making a neurological decision. A fintech app using warm reds signals risk and urgency (not what you want with money). A meditation app using cool blues signals safety (exactly right).</p>
+
+        <h3>Contrast and visual processing</h3>
+        <p>High contrast grabs attention. Low contrast feels sophisticated but harder to process. This isn't opinion—it's how your visual cortex works. Designers who understand this can balance luxury (low contrast) with usability (high contrast where it matters).</p>
+
+        <h2>Typography and the Motor Cortex</h2>
+        <p>Typography affects more than readability. It affects <em>how</em> your brain processes information.</p>
+        <p>Serif fonts feel traditional, trustworthy, established. They activate neural patterns associated with time and stability. Sans-serif fonts feel modern, clean, forward-thinking. They activate patterns associated with clarity and speed.</p>
+        <p>Letter spacing, line height, font weight—these all affect how effortlessly your brain parses information. Too tight, and your motor cortex works harder to track individual letters. Too loose, and your brain has to work to connect the letters into words.</p>
+        <p>This is why premium brands invest in custom typography. It's not vanity—it's neural optimization.</p>
+
+        <h2>Motion, Animations, and Smooth Interactions</h2>
+        <p>Your brain predicts motion before it happens. When an animation is jerky or unpredictable, your brain struggles to anticipate. When motion is smooth and follows natural physics, your brain relaxes.</p>
+        <p>This is why micro-interactions matter. A 300ms delay on a button click breaks the brain's prediction model. A button that moves when you hover it feels responsive and alive. Motion isn't decoration—it's communication that your brain understands instantly.</p>
+
+        <h2>The Gap Between AI Understanding and Design Execution</h2>
+        <p>Here's where things get interesting: AI can now measure emotional engagement at scale. It can identify which design patterns correlate with positive emotional response, longer engagement, conversion.</p>
+        <p>But AI alone can't <em>create</em> emotional meaning. That requires human creativity, cultural context, and strategic thinking.</p>
+
+        <div class="case-study">
+          <h4>The AI-Enhanced Design Process</h4>
+          <p><strong>Step 1 (Human):</strong> Define emotional goals. What should users <em>feel</em> when using this?</p>
+          <p><strong>Step 2 (AI):</strong> Analyze competitor patterns. What design patterns correlate with those emotions?</p>
+          <p><strong>Step 3 (Human):</strong> Create strategic direction. What's unique about <em>our</em> approach?</p>
+          <p><strong>Step 4 (AI + Human):</strong> Generate and test variations. Which resonates?</p>
+          <p><strong>Step 5 (Human):</strong> Refine and deploy. Ensure cultural fit and brand integrity.</p>
+        </div>
+
+        <h2>Designing for Trust in an AI World</h2>
+        <p>As AI becomes more present in our interfaces, a new design challenge emerges: how do you signal to the human brain that it's safe to trust an AI system?</p>
+        <p>This requires:</p>
+        <ul>
+          <li><strong>Transparency:</strong> Visual signals showing "this is AI-generated" or "this decision was algorithmic"</li>
+          <li><strong>Predictability:</strong> AI outputs that follow consistent patterns (design systems for AI output)</li>
+          <li><strong>Control:</strong> Humans should feel they can override or question AI decisions</li>
+          <li><strong>Explainability:</strong> Why did the system suggest this? The brain needs the story</li>
+        </ul>
+
+        <h2>The Designer's Responsibility</h2>
+        <p>Understanding neuroscience isn't optional anymore. It's foundational.</p>
+        <p>Designers who understand:</p>
+        <ul>
+          <li>Why certain patterns trigger emotional responses</li>
+          <li>How cognitive load affects user experience</li>
+          <li>What "aesthetic" actually means neurologically</li>
+          <li>How to leverage AI insights while maintaining human judgment</li>
+        </ul>
+        <p>...will create experiences that don't just work. They'll create experiences that feel <em>right</em> on a neurological level.</p>
+
+        <div class="highlight">
+          <p><strong>The future of design:</strong> It's not "human design vs. AI design." It's designers who understand human neuroscience, use AI to enhance creative decisions, and create experiences that are both beautiful and neurologically optimized.</p>
+        </div>
+
+        <h2>What This Means for Your Brand</h2>
+        <p>If you're building a brand or product, ask yourself:</p>
+        <ul>
+          <li>What emotional response do I want users to have in the first 100ms?</li>
+          <li>Are my colors, typography, and interactions aligned with that goal?</li>
+          <li>Am I using contrast and hierarchy to guide attention?</li>
+          <li>Do my interactions feel smooth and predictable?</li>
+          <li>Where am I asking the user's brain to work harder than necessary?</li>
+        </ul>
+        <p>These aren't aesthetic questions. They're neuroscience questions. And they're what separate good design from great design.</p>
+
+        <div class="cta-section">
+          <p>Ready to build a brand that resonates on a neurological level?</p>
+          <a href="../../#contact" class="cta-link">Let's create something meaningful</a>
+        </div>
+
+        <div class="related-articles">
+          <h3>Related articles</h3>
+          <div class="related-links">
+            <a href="../aigc-design-beyond-text-to-image/">AIGC Design: Beyond Text-to-Image</a>
+            <a href="../design-systems-that-scale/">Design Systems That Scale</a>
+            <a href="../why-fortune-500-tech-companies-redesign/">Why Fortune 500 Tech Companies Redesign</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e0e0e0; font-size: 14px; color: #666;">
+        <h3 style="font-family: 'Unbounded'; font-size: 18px; margin-bottom: 1rem; color: #0d0d0d;">Credits</h3>
+        <p><strong>Featured image:</strong> Original illustration by Lucrezia Spapperi Gestri</p>
+        <p><strong>References:</strong> Fin, E. (2017). "What Algorithms Want: Understanding the World by Working with It." MIT Press.</p>
+        <p>Insights drawn from neuroscience research in design perception, emotional response, and human-computer interaction.</p>
+      </div>
+    </article>
+  </div>
+
+  <footer>
+    <p>luluu.mail@qq.com</p>
+  </footer>
+</body>
+</html>
