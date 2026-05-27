@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AIGC is reshaping brand design. Explore what generative AI means for designers, how to use it strategically, and why it's about collaboration, not replacement.">
+<meta name="keywords" content="AIGC design, AI brand design, generative AI design, AI creative direction, design AI tools">
+<meta name="author" content="Lucrezia Spapperi Gestri">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="AIGC Design: Beyond Text-to-Image">
+<meta property="og:description" content="How generative AI is reshaping brand identity and visual design. A strategic guide for designers and creative leaders.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lucreziasdesign.github.io/portfolio/blog/aigc-design-beyond-text-to-image/">
+<meta name="twitter:card" content="summary_large_image">
+<title>AIGC Design: Beyond Text-to-Image | Lucrezia Gestri</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;700;900&family=Archivo:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://lucreziasdesign.github.io/portfolio/blog/aigc-design-beyond-text-to-image/">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #0d0d0d;
+  background: #f9f9f9;
+  line-height: 1.8;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4%;
+  border-bottom: 1px solid #e0e0e0;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav a { color: #0d0d0d; text-decoration: none; font-weight: 500; font-size: 14px; margin-left: 2rem; }
+.nav a:hover { opacity: 0.7; }
+.logo { font-family: 'Unbounded'; font-weight: 700; font-size: 18px; }
+.article-wrapper { max-width: 800px; margin: 0 auto; padding: 4rem 4%; }
+.article-header { margin-bottom: 3rem; }
+.article-meta {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 1rem;
+}
+.article-meta span { margin-right: 1.5rem; }
+.article-tag {
+  display: inline-block;
+  background: #f0f0f0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+h1 {
+  font-family: 'Unbounded';
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.article-intro {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+.article-content {
+  font-size: 16px;
+  color: #0d0d0d;
+}
+.article-content h2 {
+  font-family: 'Unbounded';
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.article-content h3 {
+  font-family: 'Unbounded';
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+}
+.article-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+.article-content ul, .article-content ol {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+.article-content strong { font-weight: 600; }
+.article-content em { font-style: italic; }
+.highlight {
+  background: #fff9e6;
+  padding: 2rem;
+  border-left: 4px solid #0d0d0d;
+  margin: 2rem 0;
+  border-radius: 4px;
+}
+.highlight p { margin: 0; }
+.cta-section {
+  background: #f0f0f0;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 3rem;
+  text-align: center;
+}
+.cta-section p { margin-bottom: 1rem; }
+.cta-link {
+  display: inline-block;
+  background: #0d0d0d;
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.cta-link:hover { opacity: 0.8; }
+.related-articles {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid #e0e0e0;
+}
+.related-articles h3 {
+  font-family: 'Unbounded';
+  font-size: 20px;
+  margin-bottom: 1.5rem;
+}
+.related-links {
+  display: grid;
+  gap: 1rem;
+}
+.related-links a {
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #0d0d0d;
+  transition: all 0.3s ease;
+}
+.related-links a:hover {
+  border-color: #0d0d0d;
+  background: #f9f9f9;
+}
+footer {
+  background: #0d0d0d;
+  color: white;
+  padding: 3rem 4%;
+  text-align: center;
+  margin-top: 4rem;
+  border-top: 1px solid #e0e0e0;
+}
+footer p { margin-bottom: 1rem; }
+footer a { color: #fff; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+@media (max-width: 768px) {
+  .nav { flex-direction: column; gap: 1rem; padding: 1.5rem 4%; }
+  .nav a { margin-left: 0; }
+  .article-wrapper { padding: 2rem 4%; }
+  h1 { font-size: 32px; }
+  .article-content h2 { font-size: 22px; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AIGC Design: Beyond Text-to-Image",
+  "description": "AIGC is reshaping brand design. Explore what generative AI means for designers, how to use it strategically, and why it's about collaboration, not replacement.",
+  "image": "https://lucreziasdesign.github.io/portfolio/assets/portrait.png",
+  "datePublished": "2025-05-20",
+  "author": {
+    "@type": "Person",
+    "name": "Lucrezia Spapperi Gestri",
+    "url": "https://lucreziasdesign.github.io/portfolio/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lucreziasdesign.github.io/portfolio/blog/aigc-design-beyond-text-to-image/"
+  }
+}
+</script>
+</head>
+<body>
+  <div class="nav">
+    <a href="../../" class="logo">LSG/DESIGN</a>
+    <div>
+      <a href="../../#work">Work</a>
+      <a href="../../#about">About</a>
+      <a href="../">Blog</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="article-wrapper">
+    <article>
+      <div class="article-header">
+        <span class="article-tag">AIGC Design</span>
+        <h1>AIGC Design: Beyond Text-to-Image</h1>
+        <div class="article-meta">
+          <span>May 20, 2025</span>
+          <span>5 min read</span>
+        </div>
+        <p class="article-intro">AIGC is reshaping how we approach brand identity and visual design. But it's not about typing a prompt and getting a logo. It's about strategic direction, human creativity, and using generative AI as a creative tool—not a replacement.</p>
+      </div>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/aigc-design-hero.jpg" alt="AI-powered creative design workflow illustration" style="max-width: 100%; height: auto; border-radius: 8px;">
+        <figcaption style="font-size: 14px; color: #999; margin-top: 0.5rem;">Featured image: AI-powered creative design workflow</figcaption>
+      </figure>
+
+      <div class="article-content">
+        <h2>What is AIGC, Really?</h2>
+        <p>AIGC stands for <strong>AI-Generated Content</strong>. But the term is broader than most realize. It's not just images. It includes:</p>
+        <ul>
+          <li><strong>Generative visuals</strong>: Images, illustrations, design variations</li>
+          <li><strong>Brand direction</strong>: Using AI to explore creative directions and variations at scale</li>
+          <li><strong>Design systems</strong>: Generating components and design patterns</li>
+          <li><strong>Content strategy</strong>: Using AI to ideate messaging, positioning, and narrative</li>
+          <li><strong>Creative workflows</strong>: Augmenting human creativity with AI-powered tools</li>
+        </ul>
+        <p>For brands and designers, AIGC is about <em>expanding creative capacity</em>. It's about exploring more ideas, faster, while maintaining human judgment and brand consistency.</p>
+
+        <h2>Why AIGC Matters for Brand Design</h2>
+        <p>Traditional brand design involves:</p>
+        <ol>
+          <li>Concept development (weeks of exploration)</li>
+          <li>Design execution (creating variations manually)</li>
+          <li>Stakeholder feedback (multiple rounds of refinement)</li>
+          <li>Production (rollout across touchpoints)</li>
+        </ol>
+        <p>AIGC compresses the timeline. You can:</p>
+        <ul>
+          <li><strong>Explore more directions faster</strong>: Generate 50 brand directions instead of 3</li>
+          <li><strong>Iterate rapidly</strong>: Test ideas before committing resources</li>
+          <li><strong>Scale production</strong>: Generate variations for different markets, seasons, campaigns</li>
+          <li><strong>Maintain consistency</strong>: Use AI to enforce brand guidelines across touchpoints</li>
+        </ul>
+
+        <div class="highlight">
+          <p><strong>Key insight:</strong> AIGC doesn't replace the strategic thinking. It amplifies it. A designer's role shifts from "making every asset" to "directing the AI and validating outputs."</p>
+        </div>
+
+        <h2>The AIGC Design Process</h2>
+        <p>Here's how we use AIGC strategically in brand projects:</p>
+
+        <h3>1. Strategy & Direction (Human)</h3>
+        <p>Define the brand strategy, visual language, and constraints. What should the designs communicate? What's off-brand? This is where human insight drives everything.</p>
+
+        <h3>2. Prompt Engineering & Generation (AI + Human)</h3>
+        <p>Create detailed prompts that describe the desired aesthetic, mood, and constraints. Generate multiple variations at scale. AI executes; humans guide.</p>
+
+        <h3>3. Curation & Refinement (Human)</h3>
+        <p>Review outputs. Select the strongest directions. Request variations. Refine until outputs align with strategy.</p>
+
+        <h3>4. Polishing & Production (AI + Human)</h3>
+        <p>Use AI for final optimization, color corrections, and variations. Use human expertise for quality assurance and final touches.</p>
+
+        <h2>Real-World Example: Key Visuals at Scale</h2>
+        <p>At Hisense's innovation event, we needed to create 50+ unique key visuals representing different product categories—all within the same brand system, but each distinct.</p>
+        <p><strong>Traditional approach:</strong> Design each manually (3-4 weeks, design team of 2-3)</p>
+        <p><strong>AIGC approach:</strong> Define visual language, generate variations, curate and refine (1 week, design direction from 1 person)</p>
+        <p>Result: Cohesive visual system, faster delivery, more strategic control.</p>
+
+        <h2>Common Misconceptions About AIGC</h2>
+
+        <h3>❌ "AI will replace designers"</h3>
+        <p>✅ AI replaces grunt work. The designer's role becomes more strategic—setting direction, making judgment calls, and ensuring brand integrity.</p>
+
+        <h3>❌ "AIGC outputs are always generic"</h3>
+        <p>✅ With strong direction and iteration, AIGC produces unique, on-brand work. The constraint is the prompt, not the AI.</p>
+
+        <h3>❌ "You can't use AI-generated content commercially"</h3>
+        <p>✅ You can—with proper licensing and disclosure. Many brands are already doing this (Starbucks, Adobe, etc.).</p>
+
+        <h3>❌ "AIGC removes the human touch"</h3>
+        <p>✅ Done right, AIGC amplifies human creativity. The human makes the strategic decisions; the AI executes at scale.</p>
+
+        <h2>When to Use AIGC (And When Not To)</h2>
+
+        <h3>✅ Use AIGC for:</h3>
+        <ul>
+          <li>Exploring multiple directions quickly</li>
+          <li>Creating variations (A/B testing, market-specific versions)</li>
+          <li>Scaling content production (social media, key visuals, illustrations)</li>
+          <li>Augmenting design systems (generating component variations)</li>
+          <li>Fast iteration on early concepts</li>
+        </ul>
+
+        <h3>❌ Don't rely solely on AIGC for:</h3>
+        <ul>
+          <li>Core brand identity (logos, primary mark)—still needs human craft</li>
+          <li>Strategic thinking—humans define direction</li>
+          <li>Complex systems that need deep product knowledge</li>
+          <li>Highly specialized or niche brand work where AI hasn't seen examples</li>
+        </ul>
+
+        <h2>The Future of AIGC Design</h2>
+        <p>We're at an inflection point. AIGC tools are improving rapidly. But the skill isn't "using an AI tool"—it's understanding brand strategy deeply enough to direct the AI effectively.</p>
+        <p>The designers who thrive will be those who:</p>
+        <ol>
+          <li>Develop stronger strategic thinking (because AI handles execution)</li>
+          <li>Learn to "speak" to AI (prompt engineering, direction-setting)</li>
+          <li>Maintain brand integrity across AI-generated work</li>
+          <li>Combine AI speed with human judgment</li>
+        </ol>
+
+        <h2>Key Takeaway</h2>
+        <p>AIGC isn't about replacing designers. It's about expanding creative capacity and compressing timelines. The brands that win are those using AI strategically—as a tool to explore more ideas, faster, while maintaining human oversight and brand consistency.</p>
+        <p>The future isn't "AI design" or "human design." It's <strong>strategic design, powered by AI</strong>.</p>
+
+        <div class="cta-section">
+          <p>Want to explore how AIGC can enhance your brand strategy?</p>
+          <a href="../../#contact" class="cta-link">Let's talk</a>
+        </div>
+
+        <div class="related-articles">
+          <h3>Related articles</h3>
+          <div class="related-links">
+            <a href="../how-to-direct-ai-for-brand-creation/">How to Direct AI for Brand Creation</a>
+            <a href="../aigc-workflows-for-design-teams/">AIGC Workflows for Design Teams</a>
+            <a href="../design-systems-that-scale/">Design Systems That Scale</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e0e0e0; font-size: 14px; color: #666;">
+        <h3 style="font-family: 'Unbounded'; font-size: 18px; margin-bottom: 1rem; color: #0d0d0d;">Credits</h3>
+        <p><strong>Featured image:</strong> Original illustration by Lucrezia Spapperi Gestri</p>
+        <p>All case studies, examples, and insights based on real brand projects and design experience.</p>
+      </div>
+    </article>
+  </div>
+
+  <footer>
+    <p>luluu.mail@qq.com</p>
+  </footer>
+</body>
+</html>
