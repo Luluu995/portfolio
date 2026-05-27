@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How to build design systems that actually scale across products, teams, and markets. Beyond component libraries—a strategic guide for enterprise design systems.">
+<meta name="keywords" content="design systems, component library, design tokens, design at scale, enterprise design, design systems strategy">
+<meta name="author" content="Lucrezia Spapperi Gestri">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Design Systems That Scale">
+<meta property="og:description" content="Build design systems that scale across products, teams, and markets. Strategy, architecture, and execution for enterprise-grade design systems.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lucreziasdesign.github.io/portfolio/blog/design-systems-that-scale/">
+<meta name="twitter:card" content="summary_large_image">
+<title>Design Systems That Scale | Lucrezia Gestri</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;700;900&family=Archivo:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://lucreziasdesign.github.io/portfolio/blog/design-systems-that-scale/">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #1a1a1a;
+  background: #fafafa;
+  line-height: 1.8;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #f0f0f0;
+}
+.nav a { color: #1a1a1a; text-decoration: none; font-weight: 500; font-size: 13px; margin-left: 2.5rem; letter-spacing: 0.5px; transition: all 0.3s ease; }
+.nav a:hover { opacity: 0.6; }
+.logo { font-family: 'Unbounded'; font-weight: 700; font-size: 16px; letter-spacing: -1px; }
+.article-wrapper { max-width: 1200px; margin: 0 auto; padding: 4rem 5%; }
+.article-hero {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-bottom: 5rem;
+  background: white;
+}
+.article-hero img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+.article-header { margin-bottom: 3rem; display: grid; grid-template-columns: 1fr 280px; gap: 3rem; align-items: start; }
+.article-header-content { }
+.article-header-sidebar { padding-top: 2rem; }
+.article-tag {
+  display: inline-block;
+  background: #f5f5f5;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #666;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+h1 {
+  font-family: 'Unbounded';
+  font-size: 56px;
+  font-weight: 900;
+  margin-bottom: 1.8rem;
+  line-height: 1.05;
+  letter-spacing: -2.5px;
+}
+.article-intro {
+  font-size: 21px;
+  color: #555;
+  margin-bottom: 0;
+  line-height: 1.8;
+  font-weight: 500;
+}
+.article-meta {
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.article-meta span { font-weight: 500; }
+.article-content {
+  font-size: 16px;
+  color: #1a1a1a;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 3rem;
+  align-items: start;
+}
+.article-body { }
+.article-content h2 {
+  font-family: 'Unbounded';
+  font-size: 32px;
+  font-weight: 800;
+  margin-top: 2.5rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+.article-content h2:first-of-type { margin-top: 0; }
+.article-content h3 {
+  font-family: 'Unbounded';
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.5px;
+}
+.article-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: #333;
+}
+.article-content ul, .article-content ol {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+.article-content li {
+  margin-bottom: 0.6rem;
+  color: #333;
+}
+.article-content strong { font-weight: 700; }
+.article-content em { font-style: italic; }
+.highlight {
+  background: #fafafa;
+  padding: 2.5rem;
+  border-left: 3px solid #1a1a1a;
+  margin: 3rem 0;
+  border-radius: 0;
+  color: #1a1a1a;
+}
+.highlight p { margin: 0; font-size: 18px; line-height: 1.8; font-style: italic; color: #333; }
+.article-sidebar-content { position: sticky; top: 120px; }
+.toc { font-size: 12px; color: #666; }
+.toc-title { font-family: 'Unbounded'; font-weight: 700; margin-bottom: 1rem; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.toc ul { list-style: none; padding: 0; }
+.toc li { margin-bottom: 0.6rem; }
+.toc a { color: #666; text-decoration: none; font-size: 13px; transition: all 0.3s ease; }
+.toc a:hover { color: #1a1a1a; }
+.cta-section {
+  background: #1a1a1a;
+  padding: 3.5rem;
+  border-radius: 0;
+  margin-top: 5rem;
+  text-align: center;
+  border: none;
+}
+.cta-section p { margin-bottom: 2rem; font-size: 18px; color: white; }
+.cta-link {
+  display: inline-block;
+  background: white;
+  color: #1a1a1a;
+  padding: 1.1rem 2.5rem;
+  text-decoration: none;
+  border-radius: 0;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+}
+.cta-link:hover { opacity: 0.85; transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.25); }
+.related-articles {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid #e8e8e8;
+}
+.related-articles h3 {
+  font-family: 'Unbounded';
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 2.5rem;
+  letter-spacing: -1px;
+}
+.related-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.related-links a {
+  padding: 2rem;
+  background: white;
+  border: 1px solid #f0f0f0;
+  border-radius: 0;
+  text-decoration: none;
+  color: #1a1a1a;
+  transition: all 0.4s ease;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 120px;
+}
+.related-links a:hover {
+  border-color: #1a1a1a;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+}
+footer {
+  background: #1a1a1a;
+  color: white;
+  padding: 3rem 5%;
+  text-align: center;
+  margin-top: 5rem;
+  border-top: 1px solid #2a2a2a;
+}
+footer p { margin-bottom: 1rem; }
+footer a { color: #fff; text-decoration: none; }
+footer a:hover { opacity: 0.8; }
+@media (max-width: 1024px) {
+  .article-content { grid-template-columns: 1fr; }
+  .article-sidebar-content { position: static; }
+  .article-hero img { height: 400px; }
+  h1 { font-size: 48px; }
+}
+@media (max-width: 768px) {
+  .nav { flex-direction: column; gap: 1rem; padding: 1.5rem 5%; }
+  .nav a { margin-left: 0; }
+  .article-wrapper { padding: 2.5rem 5%; }
+  .article-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  h1 { font-size: 36px; line-height: 1.1; }
+  .article-intro { font-size: 18px; }
+  .article-content h2 { font-size: 26px; }
+  .article-content h3 { font-size: 18px; }
+  .article-hero img { height: 280px; }
+  .related-links { grid-template-columns: 1fr; gap: 1.5rem; }
+  .related-links a { padding: 1.5rem; min-height: 100px; }
+  .cta-section { padding: 2.5rem; }
+  .cta-section p { font-size: 17px; margin-bottom: 1.5rem; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Design Systems That Scale",
+  "description": "How to build design systems that scale across products, teams, and markets. A strategic guide for enterprise design systems.",
+  "image": "https://lucreziasdesign.github.io/portfolio/assets/portrait.png",
+  "datePublished": "2026-04-18",
+  "author": {
+    "@type": "Person",
+    "name": "Lucrezia Spapperi Gestri",
+    "url": "https://lucreziasdesign.github.io/portfolio/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lucreziasdesign.github.io/portfolio/blog/design-systems-that-scale/"
+  }
+}
+</script>
+</head>
+<body>
+  <div class="nav">
+    <a href="../../" class="logo">LSG/DESIGN</a>
+    <div>
+      <a href="../../#work">Work</a>
+      <a href="../../#about">About</a>
+      <a href="../">Blog</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="article-hero">
+    <img src="../assets/design-systems-thumbnail.jpg" alt="Design systems at scale">
+  </div>
+
+  <div class="article-wrapper">
+    <article>
+      <div class="article-header">
+        <div class="article-header-content">
+          <span class="article-tag">Design Systems</span>
+          <h1>Design Systems That Scale</h1>
+          <p class="article-intro">A design system isn't a component library. It's a strategic asset that enables teams to move faster, maintain consistency, and scale design across products and markets. Here's how to build one that actually works.</p>
+        </div>
+        <div class="article-header-sidebar">
+          <div class="article-meta">
+            <span>April 18, 2026</span>
+            <span>7 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <div class="article-body">
+        <h2>What Makes a Design System Actually Scale</h2>
+        <p>Most organizations start with the wrong question: "How do we build a component library?" The real question is: "How do we enable teams to design and ship consistently?"</p>
+        <p>A design system that scales has three layers:</p>
+        <ul>
+          <li><strong>Foundation</strong> (design tokens, typography, color, spacing)</li>
+          <li><strong>Components</strong> (reusable UI patterns with clear behavior)</li>
+          <li><strong>Architecture</strong> (how teams use the system to build products)</li>
+        </ul>
+
+        <h2>The Three Traps That Kill Design Systems</h2>
+
+        <h3>Trap 1: Building for Yourself</h3>
+        <p>The biggest failure point: design systems built for designers, not for the teams that use them. Engineers need clear specs. Product teams need flexibility. Designers need enough constraint to keep things cohesive.</p>
+        <p>Your system lives or dies based on adoption. If teams can't use it easily, they'll build their own patterns. You've created fragmentation, not consistency.</p>
+
+        <h3>Trap 2: Treating It as a Finished Product</h3>
+        <p>Design systems need continuous evolution. Markets change. Technologies shift. What worked last year might be wrong this year.</p>
+        <p>Plan for iteration. Publish a roadmap. Let teams know what's coming. The worst systems are those that feel abandoned.</p>
+
+        <h3>Trap 3: Decoupling Design from Implementation</h3>
+        <p>If your Figma components don't match your code components, you've lost. The design system becomes a source of truth nobody trusts.</p>
+        <p>Keep design and code synchronized. Use tools that enforce consistency. Test it in real products.</p>
+
+        <h2>The Real-World Architecture</h2>
+        <p>At scale, your design system needs this structure:</p>
+        <pre style="background: #f0f0f0; padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto; font-size: 13px; line-height: 1.6;">
+Global Design Tokens
+  ↓
+Platform-Specific Implementations
+  ↓
+Product Design Systems
+  ↓
+Feature Teams
+        </pre>
+
+        <p><strong>Global tokens</strong> define color, typography, spacing—things that shouldn't change across your ecosystem. <strong>Platform implementations</strong> adapt tokens for web, mobile, or other mediums. <strong>Product systems</strong> layer in product-specific components. <strong>Feature teams</strong> build on top without reinventing.</p>
+
+        <h2>Outcomes When This Works</h2>
+        <p>Teams move 40% faster. Design consistency dramatically improves. Engineers don't have to guess about spacing or typography. New hires onboard faster. Code reviews are cleaner.</p>
+        <p>But only if the system is maintained, documented, and adopted by leadership.</p>
+
+        <h2>How to Start (The Real Way)</h2>
+        <p>Don't build the whole system first. Start with what's breaking your current process. Is it color inconsistency? Typography chaos? Button variants multiplying out of control?</p>
+        <p>Pick one pain point. Document the current state. Define the ideal. Ship a small system. Get adoption. Expand from there.</p>
+
+        <h2>Key Takeaway</h2>
+        <p>Design systems at scale are about enabling teams, not constraining them. Build with implementation in mind. Maintain relentlessly. Success isn't a beautiful Figma file—it's a system your entire org depends on.</p>
+
+        </div>
+
+        <div class="article-sidebar-content">
+          <div class="toc">
+            <div class="toc-title">On This Page</div>
+            <ul>
+              <li><a href="#what">What Makes Scale</a></li>
+              <li><a href="#traps">Three Traps</a></li>
+              <li><a href="#architecture">Architecture</a></li>
+              <li><a href="#outcomes">Outcomes</a></li>
+              <li><a href="#start">How to Start</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <p>Building a design system? Let's talk strategy.</p>
+        <a href="../../#contact" class="cta-link">Get in touch</a>
+      </div>
+
+      <div class="related-articles">
+        <h3>Related articles</h3>
+        <div class="related-links">
+          <a href="../aigc-design-beyond-text-to-image/">AIGC Design</a>
+          <a href="../why-fortune-500-tech-companies-redesign/">Brand Redesigns</a>
+          <a href="../ai-emotions-neuroscience/">AI & Neuroscience</a>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e8e8e8; font-size: 14px; color: #666;">
+        <h3 style="font-family: 'Unbounded'; font-size: 18px; margin-bottom: 1rem; color: #1a1a1a;">Credits</h3>
+        <p><strong>Featured image:</strong> Original illustration by Lucrezia Spapperi Gestri</p>
+        <p>Insights based on design system strategies across enterprise tech companies and global platforms.</p>
+      </div>
+    </article>
+  </div>
+
+  <footer>
+    <p>luluu.mail@qq.com</p>
+  </footer>
+</body>
+</html>
